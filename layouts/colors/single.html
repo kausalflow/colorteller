@@ -1,0 +1,207 @@
+{{ define "title"}} {{ .Title }} {{ end }}
+
+{{ define "style"}}
+<link rel="stylesheet" href="/css/blog-post.css">
+<link rel="stylesheet" href="/css/code-highlighting/dark.css">
+<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="/assets/swiper/swiper.min.css">
+
+<link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css"> -->
+
+{{ end }}
+
+{{ define "header"}} {{ partial "menu" .}}
+
+{{ end }}
+
+{{ define "main" }}
+
+<div class="container" itemscope itemtype="http://schema.org/BlogPosting">
+    {{ template "_internal/schema.html" . }}
+    <header class="post-header">
+
+        <div class="hero">
+            <div class="hero-body">
+                <div class="container">
+                    {{ partial "breadcrumb" . }}
+                    <div class="container has-text-centered">
+                        {{ partial "profile/title" . }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="section">
+        <div class="container">
+
+
+            <div class="columns">
+                <div class="column is-9">
+
+                    <div class="box"
+                        style="box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);">
+                        <!-- Image -->
+                        {{ if (isset .Params "images")}}
+
+                        <section class="section">
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper">
+                                    {{ $filePath := index (split .File `.`) 0}}
+                                    {{ range .Params.images }}
+                                    {{ $fullPath := (printf "/images/%s/%s" $filePath .path) }}
+                                    {{ if (fileExists (printf "static%s" $fullPath)) }}
+                                    <div class="swiper-slide">
+                                        <figure class="image">
+                                            {{ if or (strings.HasSuffix $fullPath "webm") (strings.HasSuffix $fullPath "mp4") }}
+                                            <video controls>
+                                                <source src="{{$fullPath}}"
+                                                        type="video/webm">
+                                                Sorry, your browser doesn't support embedded videos.
+                                            </video>
+                                            {{ else }}
+                                            <img src="{{$fullPath}}" alt="{{.Title}}">
+                                            {{ end }}
+                                        </figure>
+                                    </div>
+                                    {{ else }}
+                                    {{ end }}
+                                    {{ end }}
+                                </div>
+                                <!-- Add Pagination -->
+                                <div class="swiper-pagination"></div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                            </div>
+                        </section>
+                        {{end}}
+                        <!-- /Image -->
+                    </div>
+
+                    {{ partial "giscus-comments.html" . }}
+
+                </div>
+
+                <div class="column is-3">
+
+                    <!-- <div class="is-divider" data-content="LINKS"
+                        style="border-top:.1rem dashed #dbdbdb57 !important;margin: 0rem 0 1.5rem 0!important;">
+                    </div>
+                    <div class="box"
+                        style="box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);">
+                        <section class="section">
+
+
+                            {{range $link := .Params.links}}
+                            <div class="buttons is-centered">
+                                <a href="{{ $link.link }}" class="button is-danger is-light">{{ $link.name }}</a>
+                            </div>
+                            {{end}}
+                        </section>
+                    </div>
+                    <div class="is-divider" data-content="FEATURES of {{.Title  | truncate 15 }}"
+                        style="border-top:.1rem dashed #dbdbdb57 !important;margin: 1rem 0 !important;">
+                    </div>
+
+
+                    <div class="box"
+                        style="box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);">
+                        <section class="section">
+
+
+                            <ul id="all-tags">
+                                {{ range $idx, $tag := .Params.features }}
+                                <li>
+                                    <p><i class="fas fa-certificate" style="margin-right: 0.3em;"></i> {{ $tag }}</p>
+                                </li>
+                                {{ end }}
+                            </ul>
+                        </section>
+                    </div> -->
+                    <!-- <div class="is-divider" data-content="META {{.Title | truncate 15}}"
+                        style="border-top:.1rem dashed #dbdbdb57 !important;margin: 1rem 0 !important;">
+                    </div> -->
+                    <div class="box"
+                        style="box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);">
+                        <section class="section">
+
+                            {{ partial "profile/author" . }}
+                        </section>
+                    </div>
+                    <div class="is-divider" data-content="RELATED {{.Title | truncate 15}}"
+                        style="border-top:.1rem dashed #dbdbdb57 !important;margin: 1rem 0 !important;">
+                    </div>
+                    <div class="box"
+                        style="box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);">
+                        <section class="section">
+                            {{ partial "related-tools" . }}
+                        </section>
+                    </div>
+
+
+                </div>
+
+
+
+
+            </div>
+            <div class="columns is-mobile">
+                <div class="column">
+
+                    <div class="content blog-post section" itemprop="articleBody">
+                        {{ partial "toc" .}}
+                        {{.Content}}
+                    </div>
+
+                    <!-- <p>{{ partial "post/meta" . }}</p> -->
+                    <!-- {{ partial "post/byauthor" . }} -->
+
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+{{ partial "nav-buttons.html" . }}
+
+{{ end }}
+
+{{ define "footer"}}
+{{ partial "footer.html" .}}
+
+
+<script src="https://unpkg.com/applause-button/dist/applause-button.js"></script>
+<script src="/assets/swiper/swiper.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        spaceBetween: 30,
+        centeredSlides: true,
+        loop: true,
+        autoplay: {
+            delay: 10000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+</script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
+<script>
+    bulmaCarousel.attach('#carousel-demo', {
+        slidesToScroll: 1,
+        slidesToShow: 1
+    });
+</script> -->
+{{ end }}

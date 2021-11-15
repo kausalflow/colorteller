@@ -1,0 +1,98 @@
+baseurl: "/" # Controls base URL
+languageCode: "en-US" # Controls html lang attribute
+title: "Color Teller" # Homepage title and page title suffix
+paginate: 12 # Number of posts to show before paginating
+theme: "bulma" # to use as default theme
+
+enableRobotsTXT: true # Suggested, it generates a robots.txt
+googleAnalytics: "" # Optional, add tracking Id for analytics
+disqusShortname: "" # Optional, add Disqus shortname for comments
+SectionPagesMenu: "main" # Enable menu system for lazy bloggers
+
+
+menu:
+  main:
+    - name: "Colors"
+      weight: 1
+      identifier: colors
+      url: /colors/
+    - name: "<i class=\"fab fa-searchengin\" style=\"margin-right: 0.3em;\"></i>Advanced Search"
+      weight: 2
+      identifier: search
+      url: /search/
+    - name: "<i class=\"fas fa-folder-plus\" style=\"margin-right: 0.3em;\"></i> Submit New Tools"
+      weight: 3
+      identifier: submit
+      url: /submit/
+    - name: "<i class=\"fas fa-satellite-dish\" style=\"margin-right: 0.3em;\"></i>Community"
+      weight: 4
+      identifier: community
+      url: "https://github.com/kausalflow/community/discussions/categories/kf-workflow"
+
+params:
+  theme_variant: "journal" # possible value for the theme_variant `cerulean,cosmo,cyborg,darkly,flatly,journal,litera,lumen,lux,materia,minty,pulse,sandstone,simplex,slate,solar,spacelab,superhero,united,yeti`
+  description: "A Curated List of Color Pallets and Colormaps for Data Visualization"
+  powered_by: "love" # Optional, controls name display on footer
+  hide_author: false # Optional, set true to hide author name on posts
+  images: # Suggested, controls default OpenGraph images controls author name display on meta tag
+  github: "kausalflow/colorteller" # Optional, to display link to github account in menu bar
+  twitter: "" # Optional, to display link to twitter account in menu bar
+  facebook: "Research-Tools-101254031583772"
+  sunspot: "http://sunspot.kausalflow.com/"
+  author: "KausalFlow"
+  editURL: "https://github.com/kausalflow/tools/edit/master/content/"
+  noindex_kinds:
+    - "taxonomyTerm"
+  algolia:
+    vars:
+      - "title"
+      - "summary"
+      - "date"
+      - "publishdate"
+      - "expirydate"
+      - "permalink"
+      - "images"
+      - "author"
+      - "fields"
+      - "platforms"
+      - "file"
+    params:
+      - "categories"
+      - "tags"
+    options:
+      appId: ""
+      apiKey: ""
+      indexName: "kausalflow-colorteller-colors"
+      hitsPerPage: 12
+      routing: true
+  comments:
+    giscus:
+      repo: "kausalflow/colorteller"
+      repo_id: "="
+      category: "Comments"
+      category_id: ""
+
+
+outputFormats:
+  Algolia:
+    baseName: "algolia"
+    isPlainText: true
+    mediaType: "application/json"
+    notAlternative: true
+  Colors:
+    baseName: "colors"
+    isPlainText: true
+    mediaType: "application/json"
+    notAlternative: true
+
+outputs:
+  home:
+    - "HTML"
+    - "RSS"
+    - "Algolia"
+    - "Colors"
+
+taxonomies:
+    author: "author"
+    category: "categories"
+    tag: "tags"

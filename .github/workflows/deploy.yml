@@ -1,0 +1,38 @@
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true  # Fetch Hugo themes
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.68.3'
+          # extended: true
+
+      - name: Build
+        run: hugo --minify
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Update Algolia
+        run: |
+          npm install
+          ALGOLIA_APP_ID=NQED3STBQT ALGOLIA_ADMIN_KEY=${{ secrets.ALGOLIA_ADMIN_KEY }} ALGOLIA_INDEX_NAME=kausalflow-research-tools ALGOLIA_INDEX_FILE=public/algolia.json npm run algolia
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
