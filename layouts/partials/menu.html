@@ -14,9 +14,9 @@
     <div class="navbar-start">
 
 
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a href="/tools" class="navbar-link">
-          <i class="fas fa-toolbox" style="margin-right: 0.3em;"></i>All Tools
+      <!-- <div class="navbar-item has-dropdown is-hoverable">
+        <a href="/colors" class="navbar-link">
+          <i class="fas fa-toolbox" style="margin-right: 0.3em;"></i>All Colors
         </a>
         <div class="navbar-dropdown">
           {{ range $.Site.Taxonomies.categories }}
@@ -25,7 +25,7 @@
           </a>
           {{ end }}
         </div>
-      </div>
+      </div> -->
 
 
 
@@ -47,7 +47,7 @@
 
       <div class="navbar-item">
         <p class="control has-icons-right">
-          <input id="search-bar" class="input" type="search" placeholder="Search tools...">
+          <input id="search-bar" class="input" type="search" placeholder="Search colors...">
           <span class="icon is-small is-right">
             <icon />
           </span>
@@ -57,7 +57,7 @@
       <div class="navbar-item">
         {{ $currentPage := . }}
         {{ range .Site.Menus.main }}
-        {{ if eq (lower .Name) "tools" }}
+        {{ if eq (lower .Name) "colors" }}
 
         {{else}}
         <a itemprop="url"

@@ -1,10 +1,10 @@
 ---
-title: "About Tools for Academic Research by KausalFlow"
+title: "About ColorTeller by KausalFlow"
 date: 2021-11-11
 draft: false
 ---
 
-## About Tools for Academic Research
+## About ColorTeller
 
 This website is an extension of the GitHub repo [emptymalei/awesome-research](https://github.com/emptymalei/awesome-research). The original repo still accepts pull requests but we recommend submitting this website.
 

@@ -39,11 +39,11 @@
             <div class="columns">
                 <div class="column is-9">
 
+                    {{ if .Params.images }}
                     <div class="box"
                         style="box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);">
                         <!-- Image -->
                         {{ if (isset .Params "images")}}
-
                         <section class="section">
                             <div class="swiper-container">
                                 <div class="swiper-wrapper">
@@ -74,10 +74,12 @@
                                 <div class="swiper-button-next"></div>
                                 <div class="swiper-button-prev"></div>
                             </div>
+
                         </section>
                         {{end}}
                         <!-- /Image -->
                     </div>
+                    {{ end }}
 
                     {{ partial "giscus-comments.html" . }}
 

@@ -244,7 +244,7 @@ def generate_pages():
     help="Typeform URL",
 )
 @click.option("--token", default=os.getenv("TYPEFORM_TOKEN"), help="Typeform API token")
-@click.option("--save_path", default="content/tools/", help="Save path")
+@click.option("--save_path", default="content/colors/", help="Save path")
 def main(typeform_url, token, save_path):
 
     if not token:

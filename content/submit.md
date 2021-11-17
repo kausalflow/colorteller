@@ -1,5 +1,5 @@
 ---
-title: "Submit New Tools"
+title: "Submit New Colors"
 date: 2020-04-26T14:25:39+02:00
 draft: false
 ---

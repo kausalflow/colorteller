@@ -20,14 +20,14 @@ menu:
       weight: 2
       identifier: search
       url: /search/
-    - name: "<i class=\"fas fa-folder-plus\" style=\"margin-right: 0.3em;\"></i> Submit New Tools"
+    - name: "<i class=\"fas fa-folder-plus\" style=\"margin-right: 0.3em;\"></i> Submit New Colors"
       weight: 3
       identifier: submit
       url: /submit/
     - name: "<i class=\"fas fa-satellite-dish\" style=\"margin-right: 0.3em;\"></i>Community"
       weight: 4
       identifier: community
-      url: "https://github.com/kausalflow/community/discussions/categories/kf-workflow"
+      url: "https://github.com/kausalflow/community/discussions/categories/kf-colorteller"
 
 params:
   theme_variant: "journal" # possible value for the theme_variant `cerulean,cosmo,cyborg,darkly,flatly,journal,litera,lumen,lux,materia,minty,pulse,sandstone,simplex,slate,solar,spacelab,superhero,united,yeti`
@@ -37,10 +37,10 @@ params:
   images: # Suggested, controls default OpenGraph images controls author name display on meta tag
   github: "kausalflow/colorteller" # Optional, to display link to github account in menu bar
   twitter: "" # Optional, to display link to twitter account in menu bar
-  facebook: "Research-Tools-101254031583772"
-  sunspot: "http://sunspot.kausalflow.com/"
+  # facebook: "Research-Tools-101254031583772"
+  # sunspot: "http://sunspot.kausalflow.com/"
   author: "KausalFlow"
-  editURL: "https://github.com/kausalflow/tools/edit/master/content/"
+  editURL: "https://github.com/kausalflow/colorteller/edit/master/content/"
   noindex_kinds:
     - "taxonomyTerm"
   algolia:
@@ -96,3 +96,4 @@ taxonomies:
     author: "author"
     category: "categories"
     tag: "tags"
+    hex: "hex"
