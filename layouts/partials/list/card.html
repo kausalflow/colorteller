@@ -1,6 +1,7 @@
 <div class="card">
     <div class="card-image">
         <a href="{{ .Permalink }}">
+            {{ if and (isset .Params "images") ( .Params.images )}}
             <figure class="image" style="margin-left: auto;margin-right: auto;">
                 {{ if and (isset .Params "images") ( .Params.images )}}
                 {{ $cardimage := index (.Params.images) 0}}
@@ -18,6 +19,7 @@
                 <img src="{{$cardimage}}" style="max-height: 200px;width: auto;margin-left: auto;margin-right: auto;" alt="{{.Title}}">
                 {{ end }}
             </figure>
+            {{ end }}
         </a>
     </div>
     <div class="card-content">
@@ -30,7 +32,7 @@
         </div>
 
         <div class="content">
-            <div class="is-divider" data-content="CATEGORIES"
+            <!-- <div class="is-divider" data-content="CATEGORIES"
                 style="border-top:.1rem dashed #dbdbdb57 !important;margin: 1rem 0 !important;">
             </div>
             <p>
@@ -39,11 +41,31 @@
                     <a href="{{ "/categories/" | relLangURL }}{{ $cat | urlize }}" style="margin: 0 0.1em 0 0.1em;"><span class="tag is-link is-light">{{$cat}}</span></a>
                     {{ end }}
                 </div>
-            </p>
+            </p> -->
+            <div class="columns">
+                {{ range $idx, $color := .Params.colors | first 4 }}
+                {{ if $color.hex }}
+                <div class="column">
+                  <div class="box block" style="background-color: {{ $color.hex }};height: 3em;">
+                  </div>
+                </div>
+                {{ end }}
+                {{ end }}
+              </div>
+
+            <div class="is-divider" data-content="HEX"
+                style="border-top:.1rem dashed #dbdbdb57 !important;margin: 1rem 0 !important;">
+            </div>
+            <div class="tags" style="min-height: 80px;">
+                {{ range $hex := .Params.hex }}
+                <a href="{{ "/hex/" | relLangURL }}{{ $hex | urlize }}" style="margin: 0 0.1em 0 0.1em;"><span class="tag is-warning is-light" style="border-top: 5px solid #{{ $hex }};border-bottom: 5px solid #{{ $hex }};">#{{$hex}}</span></a>
+                {{ end }}
+            </div>
             <div class="is-divider" data-content="SUMMARY"
                 style="border-top:.1rem dashed #dbdbdb57 !important;margin: 1rem 0 !important;">
             </div>
             <p style="min-height: 100px;">{{ .Params.summary | truncate 140 }}</p>
+            {{ if .Params.tags }}
             <div class="is-divider" data-content="TAGS"
                 style="border-top:.1rem dashed #dbdbdb57 !important;margin: 1rem 0 !important;">
             </div>
@@ -52,14 +74,7 @@
                 <a href="{{ "/tags/" | relLangURL }}{{ $tag | urlize }}" style="margin: 0 0.1em 0 0.1em;"><span class="tag is-warning is-light">{{$tag}}</span></a>
                 {{ end }}
             </div>
-            <div class="is-divider" data-content="PLATFORM"
-                style="border-top:.1rem dashed #dbdbdb57 !important;margin: 1rem 0 !important;">
-            </div>
-            <div class="tags">
-                {{ range $pf := .Params.platforms }}
-                <span class="tag is-danger is-light">{{$pf}}</span>
-                {{ end }}
-            </div>
+            {{ end }}
             <!-- <time datetime="{{.Lastmod}}">{{.Lastmod}}</time> -->
         </div>
     </div>
