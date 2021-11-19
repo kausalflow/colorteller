@@ -43,7 +43,10 @@ params:
   editURL: "https://github.com/kausalflow/colorteller/edit/master/content/"
   noindex_kinds:
     - "taxonomyTerm"
+  jsondata:
+    section: "colors"
   algolia:
+    section: "colors"
     vars:
       - "title"
       - "summary"
@@ -52,10 +55,10 @@ params:
       - "expirydate"
       - "permalink"
       - "images"
+      - "colors"
       - "author"
-      - "fields"
-      - "platforms"
       - "file"
+      - "hex"
     params:
       - "categories"
       - "tags"
