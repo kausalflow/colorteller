@@ -1,5 +1,5 @@
 ---
 title: "L M"
-description: "Well, I created this website."
+description: "Well, I created colorteller."
 website: "https://leima.is"
 ---
