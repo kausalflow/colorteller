@@ -228,7 +228,7 @@ class Colors:
             )
             raise Exception("Please specify the json_path")
         json_file = self._filename() + ".json"
-        if os.path.exists(self.json_path):
+        if not os.path.exists(self.json_path):
             try:
                 logger.debug(f"Creating folder {self.json_path}")
                 os.makedirs(self.json_path, exist_ok=False)
@@ -258,7 +258,7 @@ class Colors:
         elif type == "md":
             res = self._save_md()
         elif type == "json":
-            self._save_json()
+            res = self._save_json()
 
         return res
 
