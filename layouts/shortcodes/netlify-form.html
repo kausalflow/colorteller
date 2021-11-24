@@ -16,7 +16,7 @@
     <div class="field">
         <label class="label">Your Name to be Displayed</label>
         <div class="control">
-            <input class="input" type="text" name="author" aria-labelledby="color-palette-submission-form-name-label" placeholder="Some Cool Name">
+            <input class="input" type="text" name="author" aria-labelledby="color-palette-submission-form-name-label" placeholder="Some Cool Name" maxlength="20">
         </div>
         <p class="help">This will be displayed on the corresponding webpage.</p>
     </div>
@@ -24,7 +24,7 @@
     <div class="field">
         <label class="label">Name of Color Palette</label>
         <div class="control">
-            <input class="input" type="text" name="name" aria-labelledby="color-palette-submission-form-name-label" placeholder="Some Cool Name">
+            <input class="input" type="text" name="name" aria-labelledby="color-palette-submission-form-name-label" placeholder="Some Cool Name" maxlength="30">
         </div>
         <p class="help">Please use numbers and letters only</p>
     </div>
@@ -32,7 +32,7 @@
     <div class="field">
         <label class="label">HEX of Colors</label>
         <div class="control">
-            <input class="input" type="text" name="hex" aria-labelledby="color-palette-submission-form-name-label" placeholder="#000000,#FF0033,#552211">
+            <input class="input" type="text" name="hex" aria-labelledby="color-palette-submission-form-name-label" placeholder="#000000,#FF0033,#552211" maxlength="200">
         </div>
         <p class="help is-danger">In the following format: <span>#000000,#FF0033,#552211</span></p>
     </div>
@@ -52,7 +52,7 @@
       <div class="field">
         <label class="label">Summary</label>
         <div class="control">
-          <textarea class="textarea" name="summary" placeholder="Some paragraphs to describe your color palette. (Optional)"></textarea>
+          <textarea class="textarea" name="summary" placeholder="Some paragraphs to describe your color palette. (Optional)" maxlength="5000"></textarea>
         </div>
       </div>
 
