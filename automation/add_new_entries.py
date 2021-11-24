@@ -72,6 +72,8 @@ class Colors:
         self.json_path = json_path
         self.benchmark_path = benchmark_path
 
+        self.benchmark = self._benchmark()
+
     def _parse_form_data(self, form_item):
         """ "
         here is an example of the data field.
@@ -211,9 +213,20 @@ class Colors:
             logger.debug("Color already created!")
             res = {"status": "exist"}
         else:
+            data = self.data.copy()
+            data["benchmark_images"] = [
+                {
+                    "name": "distance matrix",
+                    "path": "distance_matrix.png"
+                },
+                {
+                    "name": "noticable matrix",
+                    "path": "noticable_matrix.png"
+                }
+            ]
             logger.debug(f"Saving markdown to {md_file}")
             string_stream = StringIO()
-            yaml.dump(OrderedDict(self.data), string_stream)
+            yaml.dump(OrderedDict(data), string_stream)
             md_content = string_stream.getvalue()
             string_stream.close()
             logger.debug(f"Markdown content: {md_content}")
@@ -249,8 +262,10 @@ class Colors:
             logger.debug("Color already created!")
             status = {"status": "exist"}
         else:
+            data = self.data.copy()
+            data["benchmark"] = self.benchmark
             with open(target, "w+") as fp:
-                json.dump(self.data, fp)
+                json.dump(data, fp)
             status = {
                 "status": "added",
                 "_id": self.data.get("_id"),
@@ -259,13 +274,7 @@ class Colors:
 
         return status
 
-    def _save_benchmark(self):
-        if self.benchmark_path is None:
-            logger.error(
-                f"saving json is special and please specify which folder to save the file to: json_path"
-            )
-            raise Exception("Please specify the benchmark_path")
-
+    def _benchmark(self):
         hex_strings = self.data.get("hex")
         hex_strings = [f"#{x}" for x in hex_strings]
 
@@ -280,12 +289,21 @@ class Colors:
             ]
         )
 
+        return m
+
+    def _save_benchmark(self):
+        if self.benchmark_path is None:
+            logger.error(
+                f"saving json is special and please specify which folder to save the file to: json_path"
+            )
+            raise Exception("Please specify the benchmark_path")
+
         filename = self._filename()
         target_folder = Path(self.benchmark_path) / filename
         if not target_folder.exists():
             target_folder.mkdir(parents=True)
 
-        charts = BenchmarkCharts(metrics=m, save_folder=target_folder)
+        charts = BenchmarkCharts(metrics=self.benchmark, save_folder=target_folder)
 
         charts.distance_matrix(show=False, save_to=True)
 
@@ -295,6 +313,10 @@ class Colors:
             "status": "added",
             "_id": self.data.get("_id"),
             "title": self.data.get("title"),
+            "files": [
+                "distance_matrix.png",
+                "noticable_matrix.png"
+            ]
         }
 
         return status
