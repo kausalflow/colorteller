@@ -2,10 +2,14 @@ import json
 import os
 from collections import OrderedDict
 from io import StringIO
+from pathlib import Path
 
 import click
 import requests
 import ruamel.yaml as yaml
+from colorteller import teller
+from colorteller.utils import benchmark
+from colorteller.visualize import BenchmarkCharts
 from dateutil import parser
 from dotenv import load_dotenv
 from loguru import logger
@@ -52,7 +56,9 @@ class BearerAuth(requests.auth.AuthBase):
 
 
 class Colors:
-    def __init__(self, form_item=None, save_path=None, json_path=None):
+    def __init__(
+        self, form_item=None, save_path=None, json_path=None, benchmark_path=None
+    ):
 
         if form_item:
             self.data = self._parse_form_data(form_item)
@@ -64,6 +70,7 @@ class Colors:
 
         self.save_path = save_path
         self.json_path = json_path
+        self.benchmark_path = benchmark_path
 
     def _parse_form_data(self, form_item):
         """ "
@@ -172,7 +179,9 @@ class Colors:
         # date_iso = self.data.get("date_iso", "")
         hex_strings = "_".join(self.data.get("hex", ["palette"]))
         submission_id = self.data.get("_id", "")
-        filename = convert_title_to_filename("__".join([hex_strings, title, submission_id]))
+        filename = convert_title_to_filename(
+            "__".join([hex_strings, title, submission_id])
+        )
 
         return filename
 
@@ -250,6 +259,46 @@ class Colors:
 
         return status
 
+    def _save_benchmark(self):
+        if self.benchmark_path is None:
+            logger.error(
+                f"saving json is special and please specify which folder to save the file to: json_path"
+            )
+            raise Exception("Please specify the benchmark_path")
+
+        hex_strings = self.data.get("hex")
+        hex_strings = [f"#{x}" for x in hex_strings]
+
+        ct = teller.ColorTeller(hex_strings=hex_strings)
+
+        c = teller.Colors(colorteller=ct)
+
+        m = c.metrics(
+            methods=[
+                benchmark.PerceptualDistanceBenchmark,
+                benchmark.LightnessBenchmark,
+            ]
+        )
+
+        filename = self._filename()
+        target_folder = Path(self.benchmark_path) / filename
+        if not target_folder.exists():
+            target_folder.mkdir(parents=True)
+
+        charts = BenchmarkCharts(metrics=m, save_folder=target_folder)
+
+        charts.distance_matrix(show=False, save_to=True)
+
+        charts.noticable_matrix(show=False, save_to=True)
+
+        status = {
+            "status": "added",
+            "_id": self.data.get("_id"),
+            "title": self.data.get("title"),
+        }
+
+        return status
+
     def save(self, type="md"):
 
         res = {}
@@ -259,6 +308,8 @@ class Colors:
             res = self._save_md()
         elif type == "json":
             res = self._save_json()
+        elif type == "benchmark":
+            res = self._save_benchmark()
 
         return res
 
@@ -299,6 +350,7 @@ def main(netlify_api_base_url, netlify_form_id, token, save_path, json_path):
         if colors_obj.data.get("_id") not in pr_history:
             colors_save = colors_obj.save()
             colors_save_json = colors_obj.save(type="json")
+            colors_save_benchmark = colors_obj.save(type="benchmark")
             if colors_save.get("status") == "added":
                 with open(history_file, "a") as fp:
                     fp.write(f"{colors_save.get('_id')}\n")
