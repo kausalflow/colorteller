@@ -1,4 +1,4 @@
-name: CI Add New Tool
+name: CI Add New Palette
 
 on:
   push:
@@ -48,14 +48,14 @@ jobs:
           commit_message=$(git diff --name-only --staged | tail -1)
           # echo "COMPANY_NAME=$(cat $commit_message | grep name)" >> $GITHUB_ENV
           # echo "COMPANY_BODY=$(cat $commit_message)" >> $GITHUB_ENV
-          git commit -m "new tool" || echo "Nothing to update"
+          git commit -m "new palette" || echo "Nothing to update"
           git status
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
-          title: New Tool Request
-          body: "A new tool has been requested. Check the files changed to see the details."
+          title: New Palette Request
+          body: "A new palette has been requested. Check the files changed to see the details."
           token: ${{ secrets.GITHUB_TOKEN }}
           branch-suffix: short-commit-hash
       - name: Check PR outputs
