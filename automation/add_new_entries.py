@@ -325,8 +325,9 @@ class Colors:
 )
 @click.option("--token", default=os.getenv("NETLIFY_TOKEN"), help="NETLIFY API token")
 @click.option("--save_path", default="content/colors/", help="Save path")
-@click.option("--json_path", default="data/colors/", help="Save path")
-def main(netlify_api_base_url, netlify_form_id, token, save_path, json_path):
+@click.option("--json_path", default="data/colors/", help="json file path")
+@click.option("--benchmark_path", default="static/assets/colors/", help="Benchmark path")
+def main(netlify_api_base_url, netlify_form_id, token, save_path, json_path, benchmark_path):
 
     netlify_api_base_url = f"{netlify_api_base_url}{netlify_form_id}/submissions"
 
@@ -346,7 +347,7 @@ def main(netlify_api_base_url, netlify_form_id, token, save_path, json_path):
     logger.info(f"PR History: {pr_history}")
 
     for color in tf_json:
-        colors_obj = Colors(form_item=color, save_path=save_path, json_path=json_path)
+        colors_obj = Colors(form_item=color, save_path=save_path, json_path=json_path, benchmark_path=benchmark_path)
         if colors_obj.data.get("_id") not in pr_history:
             colors_save = colors_obj.save()
             colors_save_json = colors_obj.save(type="json")
