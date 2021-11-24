@@ -1,0 +1,74 @@
+<form
+    name="simpleContactForm"
+    method="POST"
+    action="/submitted"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+    id="color-palette-submission-form"
+    class="contact-form"
+    style="margin-bottom: 3em;"
+>
+    <p class="is-hidden">
+        <label id="color-palette-submission-form-bot-label"
+            >Don't fill this out if you're human: <input name="bot-field" aria-labelledby="color-palette-submission-form-bot-label"
+        /></label>
+    </p>
+    <div class="field">
+        <label class="label">Your Name to be Displayed</label>
+        <div class="control">
+            <input class="input" type="text" name="author" aria-labelledby="color-palette-submission-form-name-label" placeholder="Some Cool Name">
+        </div>
+        <p class="help">This will be displayed on the corresponding webpage.</p>
+    </div>
+
+    <div class="field">
+        <label class="label">Name of Color Palette</label>
+        <div class="control">
+            <input class="input" type="text" name="name" aria-labelledby="color-palette-submission-form-name-label" placeholder="Some Cool Name">
+        </div>
+        <p class="help">Please use numbers and letters only</p>
+    </div>
+
+    <div class="field">
+        <label class="label">HEX of Colors</label>
+        <div class="control">
+            <input class="input" type="text" name="hex" aria-labelledby="color-palette-submission-form-name-label" placeholder="#000000,#FF0033,#552211">
+        </div>
+        <p class="help is-danger">In the following format: <span>#000000,#FF0033,#552211</span></p>
+    </div>
+
+    <div class="field">
+        <label class="label">Email</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input" type="email" name="email" placeholder="Email address (Optional)" value="">
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+        </div>
+        <p class="help is-info">Email address so that we can contact you and verify that owner of the color palette when needed. This is optional.</p>
+      </div>
+
+
+      <div class="field">
+        <label class="label">Summary</label>
+        <div class="control">
+          <textarea class="textarea" name="summary" placeholder="Some paragraphs to describe your color palette. (Optional)"></textarea>
+        </div>
+      </div>
+
+      <article class="message is-danger">
+        <div class="message-header">
+          <p>Make it Open</p>
+        </div>
+        <div class="message-body">
+            Only submit if you agree that the color palette will be shared under CC BY-SA license.
+        </div>
+      </article>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button type="submit" class="button is-link">Submit</button>
+        </div>
+      </div>
+</form>
+

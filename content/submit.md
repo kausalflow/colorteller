@@ -4,20 +4,24 @@ date: 2020-04-26T14:25:39+02:00
 draft: false
 ---
 
-There are two ways to submit a new tool.
+{{< message >}}
 
 **All submitted content will be licensed** under [the **CC BY-SA** license](https://creativecommons.org/licenses/by-sa/4.0/). Under this license, everyone, including you, can access and use the content on this website freely. **Please don't submit anything if you don't agree with this license.**
 
-On how to use the content, please refer to [the About page](/about/).
+On how to use the open content, please refer to [the About page](/about/).
 
+{{< /message >}}
+
+There are two ways to submit a new color palette.
 
 ## Using Our Form
 
-We have created a form for you to submit new tools. We will regularly collect the results and integrate them into our website. Click the button below to submit a tool. All submissions are listed on [this trello board](https://trello.com/b/SwVhZkOp/tools-submissions).
+We have created a form for you to submit new tools. We will regularly collect the results and integrate them into our website.
 
-{{< typeform-button >}}
+{{< netlify-form >}}
 
-We pull data from this form automatically and create a [Pull Request on GitHub](https://github.com/kausalflow/tools/pulls). Not every tool will be merged. The unmerged tools will be shown in the list of [PRs](https://github.com/kausalflow/tools/pulls).
+We pull data from this form automatically and create a [Pull Request on GitHub](https://github.com/kausalflow/colorteller/pulls). Not every tool will be merged. The unmerged tools will be shown in the list of [PRs](https://github.com/kausalflow/tools/pulls).
+
 
 ## OR Create a Pull Request on GitHub
 

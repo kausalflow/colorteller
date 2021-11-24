@@ -3,7 +3,7 @@ title: "Bobcat Yellow"
 summary: "This is an experiment"
 colors:
   - name: "" # optional
-    hex: "#8de4d3" # hex code of the color
+    hex: "#8de4d3" # hex code of the color, this is required
   - hex: "#344b46"
   - hex: "#74ee65"
   - hex: "#238910"
