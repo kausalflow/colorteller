@@ -35,7 +35,7 @@ jobs:
           pip install -r automation/requirements.txt
       - name: Download Records
         run: |
-          python automation/add_new_entries.py --token ${{ secrets.TYPEFORM_TOKEN }}
+          python automation/add_new_entries.py --token ${{ secrets.NETLIFY_TOKEN }} --netlify_form_id ${{ secrets.NETLIFY_FORM_ID }}
           ls content/colors/
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
