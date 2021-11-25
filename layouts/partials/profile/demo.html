@@ -1,0 +1,52 @@
+<div class="box" style="box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);">
+  <article class="media">
+    <div class="media-content">
+      <div class="content">
+
+        <div class="is-divider" data-content="Demo"
+          style="border-top:.1rem dashed #dbdbdb57 !important;margin: 1rem 0 !important;">
+        </div>
+        <section class="section">
+          {{ if .Params.demo_images }}
+          {{ if (isset .Params "demo_images")}}
+          <div class="columns is-multiline">
+            {{ $filePath := index (split .File `.`) 0}}
+            {{ range .Params.demo_images }}
+            {{ $fullPath := (printf "/assets/%s/%s" $filePath .path) }}
+            {{ if (fileExists (printf "static%s" $fullPath)) }}
+            <div class="column is-half is-desktop">
+              <div class="is-divider" data-content="Demo: {{ .name }}"
+                style="border-top:.1rem dashed #dbdbdb57 !important;margin: 1rem 0 !important;">
+              </div>
+              <div class="box"
+                style="box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);">
+                <!-- Image -->
+                  <figure class="image">
+                    {{ if or (strings.HasSuffix $fullPath "webm") (strings.HasSuffix $fullPath "mp4") }}
+                    <video controls>
+                      <source src="{{$fullPath}}" type="video/webm">
+                      Sorry, your browser doesn't support embedded videos.
+                    </video>
+                    {{ else }}
+                    <img src="{{$fullPath}}" alt="{{.Title}}">
+                    {{ end }}
+                  </figure>
+                {{ else }}
+                {{end}}
+                <!-- /Image -->
+              </div>
+            </div>
+            {{ end }}
+            {{ end }}
+          </div>
+          {{ end }}
+        </section>
+
+      </div>
+
+    </div>
+    <div class="media-right">
+
+    </div>
+  </article>
+</div>

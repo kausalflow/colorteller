@@ -224,6 +224,24 @@ class Colors:
                     "path": "noticable_matrix.png"
                 }
             ]
+            data["demo_images"] = [
+                {
+                    "name": "bar chart",
+                    "path": "ac_bar_chart.png"
+                },
+                {
+                    "name": "donut chart",
+                    "path": "ac_donut_chart.png"
+                },
+                {
+                    "name": "line chart",
+                    "path": "ac_line_chart.png"
+                },
+                {
+                    "name": "scatter plot",
+                    "path": "ac_scatter_chart.png"
+                }
+            ]
             logger.debug(f"Saving markdown to {md_file}")
             string_stream = StringIO()
             yaml.dump(OrderedDict(data), string_stream)
