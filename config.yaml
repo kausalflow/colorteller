@@ -81,9 +81,9 @@ params:
   comments:
     giscus:
       repo: "kausalflow/colorteller"
-      repo_id: "="
+      repo_id: "R_kgDOGX51QA"
       category: "Comments"
-      category_id: ""
+      category_id: "DIC_kwDOGX51QM4CACaA"
 
 
 outputFormats:
