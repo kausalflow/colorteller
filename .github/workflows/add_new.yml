@@ -3,9 +3,9 @@ name: CI Add New Palette
 on:
   push:
     branches:
-      - master
-  # schedule:
-  #   - cron:  '0 7/1 * * *'
+      - main
+  schedule:
+    - cron:  '0 7/1 * * *'
   workflow_dispatch:
     inputs:
       name:
