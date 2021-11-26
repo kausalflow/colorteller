@@ -49,6 +49,7 @@ params:
   # sunspot: "http://sunspot.kausalflow.com/"
   author: "KausalFlow"
   editURL: "https://github.com/kausalflow/colorteller/edit/master/content/"
+  chart_docs_url: "https://kausalflow.com/colorteller-package/results/#visualizations"
   noindex_kinds:
     - "taxonomyTerm"
   jsondata:
