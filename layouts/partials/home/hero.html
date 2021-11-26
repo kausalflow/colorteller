@@ -5,7 +5,7 @@
         <div class="container has-text-centered">
             <div class="columns is-vcentered">
                 <div class="column">
-                    <img src="images/home/undraw_science_fqhl.svg">
+                    <img src="images/home/undraw_elements_cipa.svg">
                 </div>
                 <div class="column is-three-fifths">
                     <h1 class="title is-2 is-spaced" style="text-transform: none;">
@@ -22,8 +22,8 @@
 
                     <h2 class="subtitle is-4" style="text-transform: none;">
                         <div class="tags is-centered">
-                            <span class="tag is-info is-rounded">Find the Best Color for figures</span>
-                            <span class="tag is-info is-rounded">Share Your color palletes and colormaps</span>
+                            <span class="tag is-link is-rounded">Find the Best Color for figures</span>
+                            <span class="tag is-link is-rounded">Share Your color palletes and colormaps</span>
                         </div>
                     </h2>
                     <div class="is-divider"
@@ -32,8 +32,8 @@
                     <div class="buttons is-centered">
                         {{ $colors := (where .Site.RegularPages "Section" "==" "colors") }}
                         {{ $colorsCount := len $colors }}
-                        <a href="/colors" class="button is-warning is-large"><i class="fas fa-toolbox" style="margin-right: 0.5em;"></i> ({{ $colorsCount }} Palettes)</a>
-                        <a href="/submit" class="button is-danger is-large"><i class="fas fa-folder-plus" style="margin-right: 0.3em;"></i>Submit</a>
+                        <a href="/colors" class="button is-dark is-large"><i class="fas fa-toolbox" style="margin-right: 0.5em;"></i> ({{ $colorsCount }} Palettes)</a>
+                        <a href="/submit" class="button is-warning is-large"><i class="fas fa-folder-plus" style="margin-right: 0.3em;"></i>Submit</a>
                         <a href="https://github.com/kausalflow/community/discussions/categories/kf-colorteller" class="button is-light is-large"><i class="fas fa-satellite-dish" style="margin-right: 0.3em;"></i> Community</a>
 
                     </div>
