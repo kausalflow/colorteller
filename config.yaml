@@ -16,6 +16,10 @@ menu:
       weight: 1
       identifier: colors
       url: /colors/
+    - name: "<i class=\"fas fa-palette\" style=\"margin-right: 0.3em;\"></i> All Palettes"
+      weight: 2
+      identifier: all-palettes
+      url: /colors/
     # - name: "<i class=\"fab fa-searchengin\" style=\"margin-right: 0.3em;\"></i>Advanced Search"
     #   weight: 2
     #   identifier: search
@@ -28,6 +32,10 @@ menu:
       weight: 4
       identifier: community
       url: "https://github.com/kausalflow/community/discussions/categories/kf-colorteller"
+    - name: "<i class=\"fas fa-toolbox\" style=\"margin-right: 0.3em;\"></i>More Tools"
+      weight: 4
+      identifier: more-tools
+      url: "http://tools.kausalflow.com"
 
 params:
   theme_variant: "journal" # possible value for the theme_variant `cerulean,cosmo,cyborg,darkly,flatly,journal,litera,lumen,lux,materia,minty,pulse,sandstone,simplex,slate,solar,spacelab,superhero,united,yeti`

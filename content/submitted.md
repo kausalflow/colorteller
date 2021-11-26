@@ -22,3 +22,5 @@ On how to use the open content, please refer to [the About page](/about/).
 {{< /message >}}
 
 If you would like to retract it, please contact us <code>kausalflow[[at]]gmail.com</code>.
+
+{{< back2home >}}
