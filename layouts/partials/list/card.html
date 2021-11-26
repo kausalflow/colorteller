@@ -64,7 +64,7 @@
             <div class="is-divider" data-content="SUMMARY"
                 style="border-top:.1rem dashed #dbdbdb57 !important;margin: 1rem 0 !important;">
             </div>
-            <p style="min-height: 100px;">{{ .Params.summary | truncate 140 }}</p>
+            <p style="min-height: 100px;">{{ .Params.summary | markdownify | truncate 140 }}</p>
             {{ if .Params.tags }}
             <div class="is-divider" data-content="TAGS"
                 style="border-top:.1rem dashed #dbdbdb57 !important;margin: 1rem 0 !important;">
