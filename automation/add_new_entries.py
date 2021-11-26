@@ -158,6 +158,8 @@ class Colors:
         hex_list_clean = []
         for h in hex_list:
             h = h.strip()
+            if h.startswith("'") or h.startswith('"'):
+                h = h.strip("'").strip('"')
             if not h.startswith("#"):
                 logger.error("Invalid hex string")
             h = h.strip("#")
