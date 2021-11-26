@@ -10,7 +10,7 @@ What happens next:
 
 - [A GitHub Actions](https://github.com/kausalflow/colorteller/actions/workflows/add_new.yml) will be triggered and collect the color palette you have submitted. The action runs every one hour so it might take some time for it to work.
 - The action will automatically benchmark the color palette.
-- [A new Pull Request](https://github.com/kausalflow/colorteller/pulls) will be created to append a new web page to this website.
+- [A new Pull Request](https://github.com/kausalflow/colorteller/pulls) will be created to append a new web page to this website. There will also be a preview of the submission in the comments of the Pull Request.
 - If the color palette works, the new Pull Request will be merged and your palette will be live on the product website.
 
 {{< message >}}
