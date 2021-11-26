@@ -67,6 +67,7 @@ params:
       - "author"
       - "file"
       - "hex"
+      - "benchmark"
     params:
       - "categories"
       - "tags"

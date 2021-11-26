@@ -16,6 +16,7 @@
     {{- .Scratch.SetInMap "temp" "description" $hit.Description -}}
     {{- .Scratch.SetInMap "temp" "dir" $hit.Dir -}}
     {{- .Scratch.SetInMap "temp" "file" (index (split $hit.Permalink `/`) 4) -}}
+    {{- .Scratch.SetInMap "temp" "benchmark" (index (index $.Site.Data.colors (index (split $hit.Permalink `/`) 4)) "benchmark") -}}
     {{- .Scratch.SetInMap "temp" "path" "temp" -}}
     {{- .Scratch.SetInMap "temp" "expirydate" $hit.ExpiryDate.UTC.Unix -}}
     {{- .Scratch.SetInMap "temp" "path" "temp" -}}
