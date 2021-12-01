@@ -9,7 +9,13 @@ draft: false
 
 The content of this website is under [the CC BY-SA license](https://creativecommons.org/licenses/by-sa/4.0/). Use the source and keep the source open!
 
-![](https://raw.githubusercontent.com/emptymalei/awesome-research/master/assets/cc_bysa.flat.guokr.png)
+{{< figure src="https://raw.githubusercontent.com/emptymalei/awesome-research/master/assets/cc_bysa.flat.guokr.png" caption="License" >}}
+
+The following sketch shows the workflow of adding a new color palette.
+
+{{< figure src="/images/about/workflows.jpg" caption="How the website works" >}}
+
+
 
 ## How to use the data
 
